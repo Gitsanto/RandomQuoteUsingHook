@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
@@ -66,86 +66,78 @@ const colors = [
   "#F27C38"
 ];
 
-class MyReactElement extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quote: "Your attitude determines your direction.",
-      author: "Ralph Waldo Emerson",
-      color: "#0889A6"
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
+function MyReactElement() {
+  const [quote, setQuote] = useState(
+    "Your attitude determines your direction."
+  );
+  const [author, setAuthor] = useState("Ralph Waldo Emerson");
+  const [color, setColor] = useState("#0889A6");
 
-  handleClick() {
+  const handleClick = e => {
     const randomNumber = Math.floor(Math.random() * 11) + 1;
-    this.setState({
-      quote: quotes[randomNumber].quote,
-      author: quotes[randomNumber].author,
-      color: colors[randomNumber]
-    });
-  }
+    setQuote(quotes[randomNumber].quote);
+    setAuthor(quotes[randomNumber].author);
+    setColor(colors[randomNumber]);
+  };
 
-  render() {
-    return (
-      <div
-        id="main"
-        style={{
-          backgroundColor: this.state.color,
-          transition: "background-color 1s"
-        }}
-      >
-        <div id="quote-box">
-          <div id="text-box">
-            <i
-              className="fa fa-quote-left"
-              id="quote-left"
-              style={{
-                color: this.state.color,
-                transition: "background-color 1s"
-              }}
-            >
-              {" "}
-            </i>
-            <p
-              id="text"
-              style={{
-                color: this.state.color,
-                transition: "background-color 1s"
-              }}
-            >
-              {this.state.quote}
-            </p>
-          </div>
-          <p
-            id="author"
+  return (
+    <div
+      id="main"
+      style={{
+        backgroundColor: color,
+        transition: "background-color 1s"
+      }}
+    >
+      <div id="quote-box">
+        <div id="text-box">
+          <i
+            className="fa fa-quote-left"
+            id="quote-left"
             style={{
-              color: this.state.color,
+              color: color,
               transition: "background-color 1s"
             }}
           >
-            -{this.state.author}
+            {" "}
+          </i>
+          <p
+            id="text"
+            style={{
+              color: color,
+              transition: "background-color 1s"
+            }}
+          >
+            {quote}
           </p>
-          <div id="buttons">
-            <div>
-              <button
-                id="button"
-                onClick={this.handleClick}
-                style={{
-                  backgroundColor: this.state.color,
-                  transition: "background-color 1s",
-                  color: "white"
-                }}
-              >
-                Next quote
-              </button>
-            </div>
-            <div />
+        </div>
+        <p
+          id="author"
+          style={{
+            color: color,
+            transition: "background-color 1s"
+          }}
+        >
+          -{author}
+        </p>
+        <div id="buttons">
+          <div>
+            <button
+              id="button"
+              onClick={handleClick}
+              style={{
+                backgroundColor: color,
+                transition: "background-color 1s",
+                color: "white"
+              }}
+            >
+              Next quote
+            </button>
           </div>
+          <div />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 ReactDOM.render(<MyReactElement />, document.getElementById("root"));
