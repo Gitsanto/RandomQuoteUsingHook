@@ -5,6 +5,10 @@ import "./styles.css";
 
 const quotes = [
   {
+    quote: "Practice practice practice",
+    author: "me"
+  },
+  {
     quote: "Your attitude determines your direction.",
     author: "Ralph Waldo Emerson"
   },

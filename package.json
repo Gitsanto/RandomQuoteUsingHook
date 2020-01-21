@@ -1,7 +1,7 @@
 {
-  "name": "react",
+  "name": "random-quote-with-hook",
   "version": "1.0.0",
-  "description": "",
+  "description": "Random Quote With react Hook",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
